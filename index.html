@@ -5130,7 +5130,7 @@ function applySeasonFade() {
     if (!(g.homeId in form) || !(g.awayId in form)) return;
     const hr = form[g.homeId], ar = form[g.awayId];
     const expH = expectedWin(hr + (g.neutral ? 0 : homeElo), ar);
-    const result = g.homeScore > g.awayScore ? 1 : g.homeScore < g.awayScore ? 0 : 0.5;
+    const result = (g.result === 0 || g.result === 1) ? g.result : g.homeScore > g.awayScore ? 1 : g.homeScore < g.awayScore ? 0 : 0.5;
     form[g.homeId] = hr + SYSTEM.k * (result - expH);
     form[g.awayId] = ar + SYSTEM.k * ((1 - result) - (1 - expH));
     n[g.homeId]++; n[g.awayId]++;
@@ -5384,6 +5384,8 @@ function conferenceResult(homeId, awayId) {
   );
   if (!played.length) return null;
   const g = played[played.length - 1];
+  if (g.result === 1) return "home";
+  if (g.result === 0) return "away";
   if (g.homeScore > g.awayScore) return "home";
   if (g.awayScore > g.homeScore) return "away";
   return "home";
@@ -7008,7 +7010,7 @@ function undefeatedPage() {
 function rankingsPage() {
   const rows = filteredTeams();
   const focusName = teamFocus ? (teamById(teamFocus)||{}).name : "";
-  return `<section class="hero"><h2>Rankings</h2><p>${DATA.teams.length} teams. Classes from IHSAA 2026-27; non-IHSAA schools are grouped separately. Preseason ratings: two-pass Elo over 2025-26 MaxPreps results (about 5,200 games between listed teams). Records are 0-0 for 2026-27. Elo is the preseason rating from last year. MPR* is reference only (see How).</p></section>
+  return `<section class="hero"><h2>Rankings</h2><p>${DATA.teams.length} teams. Classes from IHSAA 2026-27; non-IHSAA schools are grouped separately. Preseason ratings: two-pass Elo over 2025-26 MaxPreps results (about 5,200 games between listed teams). Records and ratings update nightly from MaxPreps finals; until a team plays, its Elo is the preseason rating. MPR* is reference only (see How).</p></section>
     ${focusBar()}
     <div class="match-suggest" style="margin-bottom:12px">
       <input id="rankSearch" class="search" placeholder="Search a team" autocomplete="off" />
@@ -7378,7 +7380,7 @@ function howPage() {
       <p><strong>Big game:</strong> 85% how highly the two teams rank (average statewide rank) + 15% how close the spread is. Closeness: spread 0–5 = full, 5–10 = 0.65, 10–15 = 0.35, over 15 = 0.1. A pair shows up only once per week.</p>
       <p><strong>Conference champs:</strong> Best record in conference games only. A share of first counts as a title. Every pair is treated as home and home, using the same win chance as the matchup calculator, over 20,000 simulated seasons. Memberships are MaxPreps 2026-27 listings. Independents (MaxPreps "Freelance" or no league) are not in any conference. Leagues with only one of our teams are left out.</p>
       <p><strong>Picks:</strong> Each week has 10 games. Pick who covers the listed spread. Correct cover = 1 point. Push = no point. Not betting. No coins, no cash, no prizes. Accounts and picks save in this browser. They sync across devices only after the site's Firebase project is connected.</p>
-      <p><strong>Data:</strong> Teams, schedules, results and conferences come from MaxPreps. Classes come from the IHSAA 2026-27 boys basketball sectional assignments. The 2026-27 schedule shows only games between two of these teams, deduplicated to one game per pair per date. Out-of-state and unlisted opponents are not shown. There are no live scores yet.</p>
+      <p><strong>Data:</strong> Teams, schedules, results and conferences come from MaxPreps. Classes come from the IHSAA 2026-27 boys basketball sectional assignments. The 2026-27 schedule shows only games between two of these teams, deduplicated to one game per pair per date. Out-of-state and unlisted opponents are not shown and do not move ratings, but their results do count in each W-L record. Scores update nightly (about 11:30 pm and 7 am Eastern) from MaxPreps finals; forfeits count by the posted win/loss.</p>
       <p>Unofficial. Not affiliated with the IHSAA or MaxPreps. IHSAA tournament seeding is a blind draw and is not affected by this site.</p>
     </section>`;
 }

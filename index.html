@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- rimratings-redirect --><script>(function(){try{var h=location.hostname;if(h!=="rimrunnerindiana.pages.dev")return;var t="https://indiana.rimratings.com"+location.pathname+location.search+location.hash;var c=window.AbortController?new AbortController():null;setTimeout(function(){c&&c.abort()},4000);fetch("https://indiana.rimratings.com/?rr_probe="+Date.now(),{mode:"no-cors",cache:"no-store",signal:c?c.signal:undefined}).then(function(){location.replace(t)}).catch(function(){});}catch(e){}})();</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-title" content="RimRunnerIndiana" />
+  <meta name="apple-mobile-web-app-title" content="Rim Ratings Indiana" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <title>RimRunnerIndiana — Indiana HS Boys Basketball</title>
+  <title>Rim Ratings Indiana — Indiana HS Boys Basketball</title>
   <link rel="icon" href="data:,">
-    <meta property="og:title" content="RimRunnerIndiana">
+    <meta property="og:title" content="Rim Ratings Indiana">
   <meta property="og:description" content="Unofficial Indiana HS boys basketball rankings, predictions, and weekly picks.">
-  <meta property="og:url" content="https://rimrunnerindiana.pages.dev/"><!-- RimRunnerIndiana URL once created -->
-  <meta name="description" content="RimRunnerIndiana: unofficial Indiana high school boys basketball rankings, predictions, and weekly picks. Not affiliated with IHSAA or MaxPreps." />
+  <meta property="og:url" content="https://indiana.rimratings.com/">
+  <meta name="description" content="Rim Ratings Indiana: unofficial Indiana high school boys basketball rankings, predictions, and weekly picks. Not affiliated with IHSAA or MaxPreps." />
   <style>
     :root {
       --navy: #07111f;
@@ -434,7 +436,7 @@
       <div class="brand">
         <div class="logo">
           <div>
-            <h1>RimRunnerIndiana</h1>
+            <h1>Rim Ratings Indiana</h1>
             <p>Indiana HS boys basketball</p>
           </div>
         </div>
@@ -457,7 +459,7 @@
 
   <div id="addHomeModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:80;padding:24px 16px;overflow:auto">
     <div style="max-width:420px;margin:40px auto;background:#12233a;border:1px solid rgba(255,203,5,.3);border-radius:16px;padding:20px;color:#f4f1e8">
-      <div style="font-weight:800;font-size:1.2rem;margin-bottom:8px">Add RimRunnerIndiana to your Home Screen</div>
+      <div style="font-weight:800;font-size:1.2rem;margin-bottom:8px">Add Rim Ratings Indiana to your Home Screen</div>
       <p style="color:#c9d0da;line-height:1.45">iPhone won’t let a site install itself. Do this:</p>
       <ol style="line-height:1.6;padding-left:20px">
         <li>Tap the <b>Share</b> button at the bottom of Safari (the square with the arrow).</li>
@@ -471,7 +473,7 @@
   <main class="wrap" id="app">
     <section class="hero">
       <h2>Open in Safari</h2>
-      <p>This file does not run inside Snapchat or a preview. Tap Share → Open in Safari, or open the RimRunnerIndiana site link.</p>
+      <p>This file does not run inside Snapchat or a preview. Tap Share → Open in Safari, or open the Rim Ratings Indiana site link.</p>
     </section>
   </main>
   <footer style="opacity:.55;font-size:.75rem;padding:8px 0 24px">Unofficial. Not affiliated with IHSAA or MaxPreps. Schedule and results data from MaxPreps.</footer>
@@ -5034,7 +5036,7 @@ const DATA = {
 const LAST_YEAR = {}; // intentionally empty (user decision): 2025-26 game lists are not embedded; raw data stays on the box
 
 
-/* FIREBASE — RimRunnerIndiana's own project "rimrunnerindiana" (not Michigan's "mitten-ratings").
+/* FIREBASE — Rim Ratings Indiana's own project "rimrunnerindiana" (not Michigan's "mitten-ratings").
    Web config is public by design; access is controlled by Firebase Auth + Firestore rules
    (rules source: repo firebase/firestore.rules). */
 const FIREBASE_CONFIG = {
@@ -6958,7 +6960,7 @@ function followBar() {
 }
 
 function siteOrigin() {
-  return (location.origin && location.origin !== "null") ? location.origin + location.pathname : "https://rimrunnerindiana.pages.dev/";
+  return (location.origin && location.origin !== "null") ? location.origin + location.pathname : "https://indiana.rimratings.com/";
 }
 function shareMatchLink() {
   return siteOrigin() + "?page=matchup&a=" + encodeURIComponent(matchA) + "&b=" + encodeURIComponent(matchB) + "&site=" + encodeURIComponent(matchSite);
@@ -7005,10 +7007,10 @@ function flashShare(msg) {
   el._t = setTimeout(() => { el.style.display = "none"; }, 2200);
 }
 async function shareText(title, text, url) {
-  const full = (text || title || "RimRunnerIndiana") + (url ? "\n" + url : "");
+  const full = (text || title || "Rim Ratings Indiana") + (url ? "\n" + url : "");
   try {
     if (navigator.share) {
-      await navigator.share({ title: title || "RimRunnerIndiana", text: full });
+      await navigator.share({ title: title || "Rim Ratings Indiana", text: full });
       flashShare("Shared");
       return;
     }
@@ -7037,24 +7039,24 @@ async function shareText(title, text, url) {
 function shareGameById(id) {
   const g = DATA.games.find(x => x.id === id);
   if (!g) {
-    shareText("RimRunnerIndiana", "Indiana HS boys basketball", siteOrigin());
+    shareText("Rim Ratings Indiana", "Indiana HS boys basketball", siteOrigin());
     return;
   }
   const p = gamePred(g);
   const home = teamById(g.homeId) || { name: "Home" };
   const away = teamById(g.awayId) || { name: "Away" };
-  shareText("RimRunnerIndiana", p.spreadLabel + " · " + away.name + " at " + home.name + " · Predicted score " + p.predAway + "-" + p.predHome, shareGameLink(g.id));
+  shareText("Rim Ratings Indiana", p.spreadLabel + " · " + away.name + " at " + home.name + " · Predicted score " + p.predAway + "-" + p.predHome, shareGameLink(g.id));
 }
 function shareCurrentMatchup() {
   const a = teamById(matchA), b = teamById(matchB);
-  if (!a || !b) return shareText("RimRunnerIndiana", "Matchup", shareMatchLink());
+  if (!a || !b) return shareText("Rim Ratings Indiana", "Matchup", shareMatchLink());
   let home = a, away = b;
   if (matchSite === "b") { home = b; away = a; }
   const saved = SYSTEM.homeCourtPoints;
   if (matchSite === "n") SYSTEM.homeCourtPoints = 0;
   const p = gamePred({ homeId: home.id, awayId: away.id, date: "2026-12-01", status: "scheduled", neutral: matchSite === "n" });
   SYSTEM.homeCourtPoints = saved;
-  shareText("RimRunnerIndiana", p.spreadLabel + " · " + away.name + " at " + home.name, shareMatchLink());
+  shareText("Rim Ratings Indiana", p.spreadLabel + " · " + away.name + " at " + home.name, shareMatchLink());
 }
 
 
@@ -7064,7 +7066,7 @@ function followedPage() {
 function homePage() {
   const top = gameOfTheWeek() || topWeekGames()[0];
   if (!top) {
-    return followBar() + `<section class="hero"><h2>RimRunnerIndiana</h2><p>No featured game this week.</p></section>`;
+    return followBar() + `<section class="hero"><h2>Rim Ratings Indiana</h2><p>No featured game this week.</p></section>`;
   }
   const g = top.g;
   const home = teamById(g.homeId);
@@ -7826,7 +7828,7 @@ function render() {
 
 
   const sp = document.getElementById("sharePicks");
-  if (sp) sp.onclick = () => shareText("RimRunnerIndiana Picks", "Make your 10 ATS picks", sharePicksLink());
+  if (sp) sp.onclick = () => shareText("Rim Ratings Indiana Picks", "Make your 10 ATS picks", sharePicksLink());
   const sm = document.getElementById("shareMatchup");
   if (sm) sm.onclick = () => {
     const a = teamById(matchA), b = teamById(matchB);
@@ -7838,10 +7840,10 @@ function render() {
       SYSTEM.homeCourtPoints = 0;
       const p = gamePred({ homeId: home.id, awayId: away.id, date: "2026-12-01", status: "scheduled" });
       SYSTEM.homeCourtPoints = saved;
-      shareText("RimRunnerIndiana", p.spreadLabel + " · " + away.name + " at " + home.name + " (neutral)", shareMatchLink());
+      shareText("Rim Ratings Indiana", p.spreadLabel + " · " + away.name + " at " + home.name + " (neutral)", shareMatchLink());
     } else {
       const p = gamePred({ homeId: home.id, awayId: away.id, date: "2026-12-01", status: "scheduled" });
-      shareText("RimRunnerIndiana", p.spreadLabel + " · " + away.name + " at " + home.name, shareMatchLink());
+      shareText("Rim Ratings Indiana", p.spreadLabel + " · " + away.name + " at " + home.name, shareMatchLink());
     }
   };
   const sg = document.getElementById("shareGotw");
@@ -7851,7 +7853,7 @@ function render() {
     if (!g) return;
     const p = gamePred(g);
     const home = teamById(g.homeId), away = teamById(g.awayId);
-    shareText("RimRunnerIndiana Game of the Week", p.spreadLabel + " · " + away.name + " at " + home.name + " · Predicted score " + p.predAway + "-" + p.predHome, shareGameLink(g.id));
+    shareText("Rim Ratings Indiana Game of the Week", p.spreadLabel + " · " + away.name + " at " + home.name + " · Predicted score " + p.predAway + "-" + p.predHome, shareGameLink(g.id));
   };
   document.querySelectorAll("[data-share-game]").forEach(el => {
     el.onclick = ev => {
@@ -7860,7 +7862,7 @@ function render() {
       if (!g) return;
       const p = gamePred(g);
       const home = teamById(g.homeId), away = teamById(g.awayId);
-      shareText("RimRunnerIndiana", p.spreadLabel + " · " + away.name + " at " + home.name, shareGameLink(g.id));
+      shareText("Rim Ratings Indiana", p.spreadLabel + " · " + away.name + " at " + home.name, shareGameLink(g.id));
     };
   });
 
@@ -7881,7 +7883,7 @@ if (!window.rrShareBound) {
     e.stopPropagation();
     try {
       if (btn.id === "shareMatchup") shareCurrentMatchup();
-      else if (btn.id === "sharePicks") shareText("RimRunnerIndiana Picks", "Make your 10 ATS picks", sharePicksLink());
+      else if (btn.id === "sharePicks") shareText("Rim Ratings Indiana Picks", "Make your 10 ATS picks", sharePicksLink());
       else if (btn.id === "shareGotw") {
         const top = gameOfTheWeek() || topWeekGames()[0];
         const g = top && top.g ? top.g : top;

@@ -352,7 +352,10 @@ def find_game(site, e, cid, claimed):
 def apply(site, ledger):
     """Bake the ledger into site.games / site.teams. Idempotent."""
     gid = {g["id"]: g for g in site.games}
-    claimed = {e.get("gameId") for e in ledger["finals"].values() if e.get("gameId")}
+    def _same(c, e):   # ledger-id-fix2
+        g = gid.get(e.get("gameId"))
+        return g is not None and (g.get("maxprepsContestId") == c or {g["homeId"], g["awayId"]} == {site.mp2slug.get(e["homeMp"]), site.mp2slug.get(e["awayMp"])})
+    claimed = {e.get("gameId") for c, e in ledger["finals"].items() if e.get("gameId") and _same(c, e)}
     m = re.match(r"(.*?)\d+$", site.games[0]["id"]) if site.games else None
     prefix = m.group(1) if m else "in26-"
     stats = {"matched": 0, "rescheduled": 0, "added": 0, "pending": 0}

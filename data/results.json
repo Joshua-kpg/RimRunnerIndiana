@@ -1218,6 +1218,19 @@
    "state": "applied",
    "winner": "home"
   },
+  "987fffce-aa3e-4b65-a296-54a464dda5c4": {
+   "awayMp": "838df278-68e1-4203-a3c4-fcd234f9621b",
+   "awayScore": 13,
+   "date": "2026-11-25",
+   "forfeit": false,
+   "gameId": "in26-0095",
+   "homeMp": "4f95aae2-ecb0-4ba2-9329-53b0749cad40",
+   "homeScore": 47,
+   "neutral": null,
+   "source": "scores-page",
+   "state": "applied",
+   "winner": "home"
+  },
   "9994e27a-3a1d-468e-8e10-bb779b57a35b": {
    "awayMp": "f9be9d90-c552-4ce8-bbb6-ffa279c30d02",
    "awayScore": 44,
